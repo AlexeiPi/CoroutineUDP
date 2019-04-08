@@ -25,7 +25,7 @@ def server_():
             pass
         else:
             s_count += 1
-            s_mess2 = str(s_count) + ' ' + str(len(s_mess)) + ' bytes received by server listening 11234 with' + s_mess.decode()
+            s_mess2 = str(s_count) + ' ' + str(len(s_mess)) + ' bytes received by server listening ' + str(addr11234[1]) + ' with' + s_mess.decode()
             serverSaySock.sendto(s_mess2.encode(), addr11235)
             client.send('Listen2Server')
 
@@ -37,13 +37,13 @@ def client_():
         if c_mess == 'Listen2Server':
             try:
                 c_mess, address = serverSaySock.recvfrom(10000)
-                print('client listening strings from port 11235 sent by server via 11235 ->>> ')
+                print('client listening strings from port ' + str(addr11235[1]) + ' sent by server via ' + str(addr11235[1]) +' ->>> ')
                 print('\t'*1 + c_mess.decode())
             except socket.error:
                 pass
         else:
             client_count += 1
-            client_message2 = '\n' + '\t'*2 + str(client_count) + ' client sending random int ' + c_mess + ' to 11234 '
+            client_message2 = '\n' + '\t'*2 + str(client_count) + ' client sending random int ' + c_mess + ' to ' + str(addr11234[1])
             clientSaySock.sendto(client_message2.encode(), addr11234)
 
 

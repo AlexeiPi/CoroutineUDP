@@ -1,4 +1,4 @@
-import socket
+iimport socket
 import random
 import sys
 import time
@@ -27,14 +27,14 @@ def server_():
             s_count += 1
             s_mess2 = str(s_count) + ' ' + str(len(s_mess)) + ' bytes received by server listening 11234 with' + s_mess.decode()
             serverSaySock.sendto(s_mess2.encode(), addr11235)
-            client.send(1)
+            client.send('Listen2Server')
 
 
 def client_():
     client_count = 0
     while True:
         client_message = (yield)
-        if client_message == 1:
+        if client_message == 'Listen2Server':
             try:
                 s_mess, address = serverSaySock.recvfrom(10000)
                 print('client listening strings from port 11235 sent by server via 11235 ->>> ')
@@ -56,3 +56,4 @@ if __name__ == '__main__':
         time.sleep(0.01)
         client.send(str(random.randint(0, sys.maxsize)))
         server.send(0)
+

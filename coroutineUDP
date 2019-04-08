@@ -33,8 +33,8 @@ def server_():
 def client_():
     client_count = 0
     while True:
-        client_type = (yield)
-        if client_type == 1:
+        client_message = (yield)
+        if client_message == 1:
             try:
                 s_mess, address = serverSaySock.recvfrom(10000)
                 print('client listening strings from port 11235 sent by server via 11235 ->>> ')
@@ -42,8 +42,6 @@ def client_():
             except socket.error:
                 pass
         else:
-            time.sleep(0.01)
-            client_message = str(random.randint(0, sys.maxsize))
             client_count += 1
             client_message2 = '\n' + '\t'*2 +str(client_count) + ' client sending random int ' + client_message + ' to 11234 '
             clientSaySock.sendto(client_message2.encode(), addr11234)
@@ -55,5 +53,6 @@ if __name__ == '__main__':
     server = server_()
     next(server)
     while True:
-        client.send(0)
+        time.sleep(0.01)
+        client.send(str(random.randint(0, sys.maxsize)))
         server.send(0)

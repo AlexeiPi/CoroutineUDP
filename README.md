@@ -6,5 +6,5 @@ python coroutine implementation of UDP communication
 4. Press Enter button
 5. Watch UDP communication
 6. Watching has no time limit. 
-7. To force stopping it could be good by sending to any of the ports 11234/11235 "StopIt" message.
+7. To force stopping could be good by sending to any of the ports 11234/11235 "StopIt" message.
 8. It could be done from any Terminal and maybe easily implemented in the nearest future.

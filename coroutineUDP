@@ -2,7 +2,7 @@ import socket
 import random
 import sys
 import time 
-# i changed it
+# i changed it locally
 
 addr11234 = ('localhost', 11234)
 addr11235 = ('localhost', 11235)
